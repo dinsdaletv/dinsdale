@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ### default configuration (just the relevant parts)
-VPN_KEY_FILE="/root/openvpn2.key"
+VPN_KEY_FILE="/root/openvpn.key"
 ###
 
 
