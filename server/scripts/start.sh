@@ -9,6 +9,8 @@ BOND_IP="192.168.196.1"
 BOND_NETMASK="255.255.255.0"
 
 VPN_KEY_FILE="/root/openvpn.key"
+TUN_UP_HOOK="/opt/bond_dinsdale/server/hooks/tun_up_hook.sh"
+TUN_DOWN_HOOK="/opt/bond_dinsdale/server/hooks/tun_down_hook.sh"
 ###
 
 
@@ -47,7 +49,11 @@ for number in 0 1 2 3 4 5 6 7 8 9; do
 		--cipher AES-256-CBC \
 		--comp-lzo \
 		--persist-tun \
-		--keepalive 1 10 >> /tmp/$TUN_IFACE.log 2>&1 &
+		--keepalive 1 10 \
+		--up $TUN_UP_HOOK \
+		--up-delay \
+		--up-restart \
+		--down $TUN_DOWN_HOOK >> /tmp/$TUN_IFACE.log 2>&1 &
 	
 	TUN_PID=$!
 	echo $TUN_PID > /tmp/$TUN_IFACE.pid
