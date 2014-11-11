@@ -32,8 +32,8 @@ for number in 0 1 2 3 4 5 6 7 8 9; do
 	TUN_PORT="$((2000 + number))"
 	
 	openvpn --mktun --dev $TUN_IFACE
-	ip link set $TUN_IFACE down
 	ifenslave bond0 $TUN_IFACE
+	ip link set $TUN_IFACE down
 	
 	openvpn --secret $VPN_KEY_FILE \
 		--script-security 2 \
