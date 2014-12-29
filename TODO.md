@@ -8,7 +8,8 @@
     - [ ] console interface
     - [ ] JSON interface
     - overlay
-      - [ ] static overlay ("#dinsdaletv" on the right?)
+      - static overlay
+        - [ ] "#dinsdaletv" in the top right corner
       - dynamic overlay
         - [ ] time
         - [ ] configurable message
